@@ -9,7 +9,14 @@ export default function Index() {
         alignItems: "center",
       }}
     >
-      <Text>Edit app/index.tsx to edit this tela.</Text>
+      <Text
+        style={{
+          fontSize: 30,
+          fontFamily: "montserrat-bold"
+        }}
+      >
+        Edit app/index.tsx to edit this tela.
+      </Text>
     </View>
   );
 }
