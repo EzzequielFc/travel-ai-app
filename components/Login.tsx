@@ -18,7 +18,7 @@ export default function Login() {
       <View style={styles.container}>
         <Text
           style={{
-            fontSize: 18,
+            fontSize: 24,
             fontFamily: "montserrat-bold",
             color: Colors.PRIMARY,
             textAlign: "center",
@@ -31,7 +31,7 @@ export default function Login() {
           style={{
             color: Colors.PRIMARY,
             fontFamily: "montserrat-regular",
-            fontSize: 12,
+            fontSize: 16,
             textAlign: "center",
             marginTop: 10,
           }}
@@ -70,7 +70,7 @@ const styles = StyleSheet.create({
     padding: 16,
   },
   button: {
-    padding: 10,
+    padding: 16,
     backgroundColor: Colors.PRIMARY,
     borderRadius: 20,
     marginTop: "25%",

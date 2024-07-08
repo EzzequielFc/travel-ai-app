@@ -4,12 +4,37 @@ import {
   TouchableOpacity,
   StyleSheet,
   TextInput,
+  ToastAndroid,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { router } from "expo-router";
 
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "./../../../configs/FirebaseConfig";
 export default function SignOut() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [fullName, setFullName] = useState("");
+
+  const onCreateAccount = async () => {
+    if (!email && !password && !fullName) {
+      ToastAndroid.show("Entre com os detalhes", ToastAndroid.BOTTOM);
+      return;
+    }
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        ToastAndroid.show("Conta criada com sucesso!", ToastAndroid.BOTTOM);
+        router.back();
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+      });
+  };
+
   return (
     <View
       style={{
@@ -40,6 +65,7 @@ export default function SignOut() {
             style={styles.input}
             placeholder="Nome completo"
             placeholderTextColor={Colors.PRIMARY_LIGHT}
+            onChangeText={setFullName}
           />
         </View>
 
@@ -53,6 +79,7 @@ export default function SignOut() {
             style={styles.input}
             placeholder="Entre com o Email"
             placeholderTextColor={Colors.PRIMARY_LIGHT}
+            onChangeText={setEmail}
           />
         </View>
 
@@ -67,10 +94,12 @@ export default function SignOut() {
             placeholder="Entre a senha"
             placeholderTextColor={Colors.PRIMARY_LIGHT}
             secureTextEntry
+            onChangeText={setPassword}
           />
         </View>
 
         <TouchableOpacity
+          onPress={onCreateAccount}
           style={{
             padding: 16,
             backgroundColor: Colors.PRIMARY,
@@ -104,7 +133,7 @@ export default function SignOut() {
 
 const styles = StyleSheet.create({
   input: {
-    padding: 8,
+    padding: 12,
     paddingLeft: 12,
     borderWidth: 1,
     borderRadius: 15,

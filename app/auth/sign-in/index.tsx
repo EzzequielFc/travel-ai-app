@@ -4,14 +4,37 @@ import {
   TextInput,
   StyleSheet,
   TouchableOpacity,
+  ToastAndroid,
 } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 import { Ionicons } from "@expo/vector-icons";
+import { signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from "@/configs/FirebaseConfig";
 
 export default function SignIn() {
   const router = useRouter();
+
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const onSignIn = async () => {
+    if (!email && !password) {
+      ToastAndroid.show("Verifique os detalhes", ToastAndroid.BOTTOM);
+    }
+
+    try {
+      await signInWithEmailAndPassword(auth, email, password).then(
+        (userCredential) => {
+          const user = userCredential.user;
+          ToastAndroid.show("Seja bem-vindo!", ToastAndroid.TOP);
+        }
+      );
+    } catch (error) {
+      ToastAndroid.show("Verifique suas credenciais", ToastAndroid.BOTTOM);
+    }
+  };
 
   return (
     <View
@@ -56,6 +79,7 @@ export default function SignIn() {
             style={styles.input}
             placeholder="Entre com o Email"
             placeholderTextColor={Colors.PRIMARY_LIGHT}
+            onChangeText={setEmail}
           />
         </View>
 
@@ -70,10 +94,12 @@ export default function SignIn() {
             placeholder="Entre a senha"
             placeholderTextColor={Colors.PRIMARY_LIGHT}
             secureTextEntry
+            onChangeText={setPassword}
           />
         </View>
 
         <TouchableOpacity
+          onPress={onSignIn}
           style={{
             padding: 16,
             backgroundColor: Colors.PRIMARY,
@@ -107,7 +133,7 @@ export default function SignIn() {
 
 const styles = StyleSheet.create({
   input: {
-    padding: 8,
+    padding: 10,
     paddingLeft: 12,
     borderWidth: 1,
     borderRadius: 15,
