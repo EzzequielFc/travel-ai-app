@@ -27,7 +27,7 @@ export default function SignOut() {
       .then((userCredential) => {
         const user = userCredential.user;
         ToastAndroid.show("Conta criada com sucesso!", ToastAndroid.BOTTOM);
-        router.back();
+        router.replace("/mytrip");
       })
       .catch((error) => {
         const errorCode = error.code;

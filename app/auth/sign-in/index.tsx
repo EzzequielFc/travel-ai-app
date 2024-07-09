@@ -28,6 +28,7 @@ export default function SignIn() {
       await signInWithEmailAndPassword(auth, email, password).then(
         (userCredential) => {
           const user = userCredential.user;
+          router.replace("/mytrip");
           ToastAndroid.show("Seja bem-vindo!", ToastAndroid.TOP);
         }
       );
