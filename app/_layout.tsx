@@ -3,9 +3,9 @@ import { Stack } from "expo-router";
 
 export default function RootLayout() {
   const [fontsLoaded] = useFonts({
-    "montserrat-regular": require("./../assets/fonts/Montserrat-Regular.ttf"),
-    "montserrat-medium": require("./../assets/fonts/Montserrat-Medium.ttf"),
-    "montserrat-bold": require("./../assets/fonts/Montserrat-Bold.ttf"),
+    "inter-regular": require("./../assets/fonts/Inter-Regular.ttf"),
+    "inter-medium": require("./../assets/fonts/Inter-Medium.ttf"),
+    "inter-bold": require("./../assets/fonts/Inter-Bold.ttf"),
   });
 
   if (!fontsLoaded) {

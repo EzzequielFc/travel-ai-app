@@ -3,24 +3,43 @@ import React from "react";
 import { Colors } from "@/constants/Colors";
 import { useRouter } from "expo-router";
 
+import { Entypo } from "@expo/vector-icons";
+
 export default function Login() {
   const router = useRouter();
 
   return (
     <View>
-      <Image
-        source={require("./../assets/images/login.png")}
+      <View
         style={{
           width: "100%",
           height: 380,
+          backgroundColor: Colors.zinc[900],
+          justifyContent: "center",
+          alignItems: "center",
         }}
-      />
+      >
+        <Entypo name="paper-plane" size={78} color={Colors.PRIMARY} />
+        <Text
+          style={{
+            fontFamily: "inter-regular",
+            color: Colors.WHITE,
+            fontSize: 24,
+          }}
+        >
+          V
+          <Text style={{ color: Colors.PRIMARY, fontFamily: "inter-bold" }}>
+            .ia.
+          </Text>
+          j.e.i
+        </Text>
+      </View>
       <View style={styles.container}>
         <Text
           style={{
             fontSize: 24,
-            fontFamily: "montserrat-bold",
-            color: Colors.PRIMARY,
+            fontFamily: "inter-bold",
+            color: Colors.zinc[900],
             textAlign: "center",
           }}
         >
@@ -29,8 +48,8 @@ export default function Login() {
 
         <Text
           style={{
-            color: Colors.PRIMARY,
-            fontFamily: "montserrat-regular",
+            color: Colors.zinc[900],
+            fontFamily: "inter-regular",
             fontSize: 16,
             textAlign: "center",
             marginTop: 10,
@@ -46,9 +65,9 @@ export default function Login() {
         >
           <Text
             style={{
-              color: Colors.WHITE,
+              color: Colors.zinc[900],
               textAlign: "center",
-              fontFamily: "montserrat-regular",
+              fontFamily: "inter-bold",
               fontSize: 14,
             }}
           >
@@ -62,7 +81,7 @@ export default function Login() {
 
 const styles = StyleSheet.create({
   container: {
-    backgroundColor: Colors.WHITE,
+    backgroundColor: Colors.zinc[100],
     marginTop: -20,
     height: "100%",
     borderTopLeftRadius: 30,
@@ -71,8 +90,8 @@ const styles = StyleSheet.create({
   },
   button: {
     padding: 16,
-    backgroundColor: Colors.PRIMARY,
     borderRadius: 20,
     marginTop: "25%",
+    borderWidth: 2,
   },
 });
