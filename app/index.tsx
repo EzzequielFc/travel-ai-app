@@ -1,8 +1,9 @@
 import { View } from "react-native";
-import Login from "../components/Login";
+
 import { StatusBar } from "expo-status-bar";
 import { auth } from "./../configs/FirebaseConfig";
 import { Redirect } from "expo-router";
+import Login from "@/components/login";
 
 export default function Index() {
   const user = auth.currentUser;

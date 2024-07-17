@@ -10,13 +10,13 @@ function TabLayout() {
       screenOptions={{
         headerShown: false,
         tabBarActiveTintColor: Colors.PRIMARY,
-        tabBarStyle: { backgroundColor: Colors.zinc[800], padding: 4 },
+        tabBarStyle: { backgroundColor: Colors.zinc[950], padding: 4 },
       }}
     >
       <Tabs.Screen
         name="mytrip"
         options={{
-          tabBarLabel: "Minha Viagem",
+          tabBarLabel: "Minhas Viagens",
           tabBarLabelStyle: { fontFamily: "inter-bold" },
           tabBarIcon: ({ color }) => (
             <Ionicons name="location-sharp" size={24} color={color} />
